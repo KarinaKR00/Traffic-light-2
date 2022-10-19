@@ -13,7 +13,6 @@
 		9A97332729001D030080D8A4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A97332629001D030080D8A4 /* Preview Assets.xcassets */; };
 		9A97332C29001D030080D8A4 /* Traffic_light_2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9A97332A29001D030080D8A4 /* Traffic_light_2.xcdatamodeld */; };
 		9A97333329001F580080D8A4 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A97333229001F580080D8A4 /* CircleView.swift */; };
-		9A97333529002B800080D8A4 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A97333429002B800080D8A4 /* ButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,7 +23,6 @@
 		9A97332629001D030080D8A4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9A97332B29001D030080D8A4 /* Traffic_light_2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Traffic_light_2.xcdatamodel; sourceTree = "<group>"; };
 		9A97333229001F580080D8A4 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
-		9A97333429002B800080D8A4 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +58,6 @@
 				9A97331F29001D010080D8A4 /* Traffic_light_2App.swift */,
 				9A97332129001D010080D8A4 /* ContentView.swift */,
 				9A97333229001F580080D8A4 /* CircleView.swift */,
-				9A97333429002B800080D8A4 /* ButtonView.swift */,
 				9A97332329001D030080D8A4 /* Assets.xcassets */,
 				9A97332A29001D030080D8A4 /* Traffic_light_2.xcdatamodeld */,
 				9A97332529001D030080D8A4 /* Preview Content */,
@@ -148,7 +145,6 @@
 			files = (
 				9A97333329001F580080D8A4 /* CircleView.swift in Sources */,
 				9A97332229001D010080D8A4 /* ContentView.swift in Sources */,
-				9A97333529002B800080D8A4 /* ButtonView.swift in Sources */,
 				9A97332029001D010080D8A4 /* Traffic_light_2App.swift in Sources */,
 				9A97332C29001D030080D8A4 /* Traffic_light_2.xcdatamodeld in Sources */,
 			);

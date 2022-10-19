@@ -18,7 +18,7 @@ struct ContentView: View {
             CircleView(color: .red, opocity: redLight)
             CircleView(color: .yellow, opocity: yellowLight)
             CircleView(color: .green, opocity: greenLight)
-            Spacer(minLength: 20)
+            Spacer()
             Text("\(trafficOf)")
             Button (action: {
                 trafficLight()
