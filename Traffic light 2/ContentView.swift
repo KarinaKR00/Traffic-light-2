@@ -6,83 +6,63 @@
 //
 
 import SwiftUI
-import CoreData
 
 struct ContentView: View {
-    @Environment(\.managedObjectContext) private var viewContext
-
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
-        animation: .default)
-    private var items: FetchedResults<Item>
-
+    @State var redLight = 0.5
+    @State var yellowLight = 0.5
+    @State var greenLight = 0.5
+    @State var trafficOn = "Светофор включен"
+    @State var trafficOf = "Свефтофор выключен"
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-                    } label: {
-                        Text(item.timestamp!, formatter: itemFormatter)
-                    }
-                }
-                .onDelete(perform: deleteItems)
+        VStack {
+            CircleView(color: .red, opocity: redLight)
+            CircleView(color: .yellow, opocity: yellowLight)
+            CircleView(color: .green, opocity: greenLight)
+            Spacer(minLength: 20)
+            Text("\(trafficOf)")
+            Button (action: {
+                trafficLight()
+            }) {
+                Text("Go")
+                    .font(.title)
+                    .foregroundColor(.white)
             }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
-                }
-            }
-            Text("Select an item")
+            .tint(.black)
+            .buttonStyle(.borderedProminent)
+            .buttonBorderShape(.capsule)
+            .controlSize(.large)
+            
+            
+        }
+        
+    }
+    
+    private func trafficLight() {
+        trafficOf = trafficOn
+        if redLight == 0.5, yellowLight == 0.5, greenLight == 0.5 {
+            redLight = 1
+        } else if redLight == 1, yellowLight == 0.5, greenLight == 0.5 {
+            redLight = 0.5
+            yellowLight = 1
+        } else if yellowLight == 1, greenLight == 0.5 {
+            yellowLight = 0.5
+            greenLight = 1
+            
+        } else if greenLight == 1 {
+            redLight = 0.5
+            yellowLight = 0.5
+            greenLight = 0.5
+           
+            
+            
         }
     }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
+    
+ 
+    
+    struct ContentView_Previews: PreviewProvider {
+        static var previews: some View {
+            ContentView()
         }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-        }
-    }
-}
-
-private let itemFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .medium
-    return formatter
-}()
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
