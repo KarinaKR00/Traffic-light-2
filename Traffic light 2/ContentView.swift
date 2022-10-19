@@ -16,8 +16,11 @@ struct ContentView: View {
     var body: some View {
         VStack {
             CircleView(color: .red, opocity: redLight)
+                .padding()
             CircleView(color: .yellow, opocity: yellowLight)
+                .padding()
             CircleView(color: .green, opocity: greenLight)
+                .padding()
             Spacer()
             Text("\(trafficOf)")
             Button (action: {
@@ -26,6 +29,7 @@ struct ContentView: View {
                 Text("Go")
                     .font(.title)
                     .foregroundColor(.white)
+
             }
             .tint(.black)
             .buttonStyle(.borderedProminent)
